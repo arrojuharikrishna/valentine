@@ -87,9 +87,6 @@ body {
     top: 0;
 }
 
-.heart-bg {
-    border-radius: 15px;
-}
 
 /* SCREENS */
 .screen {
@@ -236,21 +233,20 @@ button {
     height: 1px;
 }
 #left-photos {
-    margin-top: -100px; /* moves UP */
-    transform: translateX(45px);
+    transform: translateX(2vw);
 }
 
 #right-photos {
-    margin-top: -100px; /* moves UP */
-    transform: translateX(-15px);
+    transform: translateX(-2vw);
 }
 #day-title {
-    margin-top: -230px;   /* move title UP */
+    transform: translateY(-15vw);   /* move title UP */
 }
 #proposal h1 {
     transform: translateX(20px); /* move right */
 }
 #day-message {
+    transform: translateY(-15vw);
     max-width: 80vw;          /* limits line length */
     text-align: center;
     word-wrap: break-word;
@@ -286,12 +282,6 @@ button {
     }
 
     /* HEART POSITION */
-    .heart-bg {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg) scale(0.65);
-    }
-
     /* PHOTO LAYOUT */
     .photo-wrapper {
         flex-direction: column;
@@ -320,10 +310,12 @@ button {
     }
 
     /* RESET DESKTOP SHIFTS */
-    #left-photos,
+    #left-photos {
+    transform: translateX(-3vw);
+}
+
     #right-photos {
-        margin-top: 0;
-        transform: none;
+        transform: translateX(3vw);
     }
 
     /* TEXT */
