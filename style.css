@@ -6,9 +6,9 @@
 }
 
 body {
+    height: 100vh;
     background: #ea76a1;   /* visible base color */
     overflow: hidden;
-    min-height: 100vh
 }
 /* FLOATING HEARTS CONTAINER */
 /* INDIVIDUAL HEART */
@@ -96,7 +96,7 @@ body {
     top: 0;
     left: 0;
     display: none;
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     color: white;
     justify-content: center;
@@ -267,72 +267,90 @@ button {
         transform: scale(1);
     }
 }
-/* -------------------------
-   MOBILE RESPONSIVE FIX
---------------------------*/
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
 @media (max-width: 768px) {
 
-    /* Slideshow layout */
-    #slideshow {
-        justify-content: flex-start;
-        padding-top: 20px;
-        min-height: 100vh;
-        
-    }
-    .heart-bg {
-        transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
-    }
-    /* Stack photos vertically */
-    .photo-wrapper {
-        flex-direction: column;
-        gap: 20px;
-        transform: none; /* reset desktop shifts */
-        margin-bottom: 15px;
+    /* GENERAL */
+    body {
+        overflow: hidden;
     }
 
-    /* Remove heart spacing column */
+    .screen {
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+
+    /* HEART POSITION */
+    .heart-bg {
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0.65);
+    }
+
+    /* PHOTO LAYOUT */
+    .photo-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 160px; /* pushes photos below heart */
+        margin-bottom: 20px;
+    }
+
     .heart-space {
         display: none;
     }
 
-    /* Center photo columns */
     .photo-column {
         flex-direction: row;
         justify-content: center;
-        gap: 12px;
+        gap: 10px;
     }
 
-    /* Make photos larger & responsive */
     .photo-column img {
         width: 42vw;
         height: 52vw;
-        max-width: 180px;
-        max-height: 220px;
+        max-width: 170px;
+        max-height: 210px;
+        border-radius: 22px;
     }
 
-    /* Center text */
-    #day-title,
+    /* RESET DESKTOP SHIFTS */
+    #left-photos,
+    #right-photos {
+        margin-top: 0;
+        transform: none;
+    }
+
+    /* TEXT */
+    #day-title {
+        margin-top: 0;
+        font-size: 1.6rem;
+        max-width: 90vw;
+    }
+
     #day-message {
         max-width: 90vw;
-        text-align: center;
+        line-height: 1.5;
     }
 
-    /* Proposal screen text */
+    /* PROPOSAL SCREEN */
     #proposal h1 {
-        transform: none; /* undo desktop shift */
-        padding: 0 15px;
-        text-align: center;
+        transform: none;
+        padding: 0 16px;
+        font-size: 1.8rem;
     }
 
-    /* Buttons spacing */
+    /* BUTTONS */
     .buttons {
         flex-direction: column;
         gap: 14px;
-        margin-top: 15px;
+        margin-top: 18px;
     }
 
     .yes,
     .no {
-        width: 200px;
+        width: 220px;
     }
 }
