@@ -330,14 +330,16 @@ button {
         margin-top: 10px;
         font-size: 1.6rem;
         max-width: 90vw;
+        transform: translateX(50px)
     }
 
     #day-message {
         max-width: 90vw;
         line-height: 1.5;
         margin-bottom: 30px;
+        transform: translateX(50px)
     }
- .photo-wrapper {
+    .photo-wrapper {
         margin-top: 140px;  /* space below heart */
     }
     /* PROPOSAL SCREEN */
