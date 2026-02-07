@@ -205,7 +205,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 275px;
+    gap: 28vw;
     width: 100%;
     margin-bottom: 25px;
 }
@@ -233,12 +233,10 @@ button {
     height: 1px;
 }
 #left-photos {
-    transform: translateX(3vw);
     transform: translateY(5vw);
 }
 
 #right-photos {
-    transform: translateX(-4vw);
     transform: translateY(5vw);
 }
 #day-title {
