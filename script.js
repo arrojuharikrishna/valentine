@@ -87,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const noBtn = document.getElementById("noBtn");
 
     // YES
+    const yesMusic = document.getElementById("yesMusic");
+    const noMusic = document.getElementById("noMusic");
+
+
     yesBtn.addEventListener("click", () => {
         document.getElementById("proposal").classList.remove("active");
         document.getElementById("no-slideshow").classList.remove("active");
@@ -97,6 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         dayIndex = todayIndex;
         showCurrent();
+        if (yesMusic.paused) {
+        yesMusic.volume = 0.7;  // gentle volume
+        yesMusic.play().catch(() => {});
+    }
+
     });
 
     // NO
@@ -104,6 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("proposal").classList.remove("active");
         document.getElementById("slideshow").classList.remove("active");
         document.getElementById("no-slideshow").classList.add("active");
+        if (noMusic.paused) {
+        noMusic.volume = 0.7;  // gentle volume
+        noMusic.play().catch(() => {});
+    }
     });
 
     // NO BUTTON EVADE (DESKTOP + MOBILE SAFE)
@@ -169,4 +182,3 @@ function createHeart() {
 
 const isMobile = window.innerWidth < 768;
 setInterval(createHeart, isMobile ? 1400 : 900);
-
