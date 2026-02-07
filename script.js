@@ -130,7 +130,14 @@ document.addEventListener("DOMContentLoaded", () => {
 const heartsContainer = document.querySelector(".floating-hearts");
 
 function createHeart() {
-    if (!document.getElementById("proposal").classList.contains("active")) return;
+    const proposalActive =
+        document.getElementById("proposal").classList.contains("active");
+
+    const slideshowActive =
+        document.getElementById("slideshow").classList.contains("active");
+
+    // ❌ Do not show hearts on NO screen
+    if (!proposalActive && !slideshowActive) return;
 
     const heart = document.createElement("span");
     const size = Math.random() * 14 + 14;
@@ -149,7 +156,9 @@ function createHeart() {
     `;
 
     heartsContainer.appendChild(heart);
-    setTimeout(() => heart.remove(), 10000);
+    const isMobile = window.innerWidth < 768;
+    setInterval(createHeart, isMobile ? 1200 : 600);
+
 }
 
 setInterval(createHeart, 600);
