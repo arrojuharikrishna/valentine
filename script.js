@@ -77,6 +77,8 @@ function showCurrent() {
 }
 
 // ---------------- MAIN ----------------
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // HARD RESET SCREENS
@@ -87,9 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const noBtn = document.getElementById("noBtn");
 
     // YES
-    const yesMusic = document.getElementById("yesMusic");
+    const dayMusic = document.getElementById("dayMusic");
     const noMusic = document.getElementById("noMusic");
-
+    const dayMusicMap = [
+        "assets/music/rose.mp3",       // Rose Day
+        "assets/music/propose.mp3",    // Propose Day
+        "assets/music/chocolate.mp3",  // Chocolate Day
+        "assets/music/teddy.mp3",      // Teddy Day
+        "assets/music/promise.mp3",    // Promise Day
+        "assets/music/hug.mp3",        // Hug Day
+        "assets/music/kiss.mp3",       // Kiss Day
+        "assets/music/valentine.mp3"   // Valentine’s Day
+    ];
 
     yesBtn.addEventListener("click", () => {
         document.getElementById("proposal").classList.remove("active");
@@ -97,13 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("slideshow").classList.add("active");
 
         const todayIndex = getTodayIndex();
-        if (todayIndex === null) return;
-
         dayIndex = todayIndex;
         showCurrent();
-        if (yesMusic.paused) {
-        yesMusic.volume = 0.7;  // gentle volume
-        yesMusic.play().catch(() => {});
+        if (todayIndex !== null) {
+            dayMusic.src = dayMusicMap[todayIndex];
+        } else {
+            dayMusic.src = "assets/music/valentine.mp3"; // fallback
+        }
+        
+        if (dayMusic.paused) {
+        dayMusic.volume = 0.7;  // gentle volume
+        dayMusic.play().catch(() => {});
     }
 
     });
