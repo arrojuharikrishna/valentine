@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ---------------- FLOATING HEARTS ----------------
 const heartsContainer = document.querySelector(".floating-hearts");
+const MAX_HEARTS = 25; // absolute cap (mobile safe)
 
 function createHeart() {
     const proposalActive =
@@ -136,16 +137,21 @@ function createHeart() {
     const slideshowActive =
         document.getElementById("slideshow").classList.contains("active");
 
-    // ❌ Do not show hearts on NO screen
+    // Only show hearts on proposal or yes slideshow
     if (!proposalActive && !slideshowActive) return;
 
+    // HARD LIMIT — prevents freeze
+    if (heartsContainer.children.length >= MAX_HEARTS) return;
+
     const heart = document.createElement("span");
-    const size = Math.random() * 14 + 14;
+    const size = Math.random() * 12 + 12; // smaller hearts = faster
 
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.width = size + "px";
     heart.style.height = size + "px";
-    heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
+
+    // Slower & shorter animation
+    heart.style.animationDuration = slideshowActive ? "7s" : "9s";
 
     heart.innerHTML = `
         <svg viewBox="0 0 32 29.6">
@@ -156,9 +162,11 @@ function createHeart() {
     `;
 
     heartsContainer.appendChild(heart);
-    const isMobile = window.innerWidth < 768;
-    setInterval(createHeart, isMobile ? 1200 : 600);
 
+    // Shorter lifetime = less memory pressure
+    setTimeout(() => heart.remove(), slideshowActive ? 7000 : 9000);
 }
 
-setInterval(createHeart, 600);
+const isMobile = window.innerWidth < 768;
+setInterval(createHeart, isMobile ? 1400 : 900);
+
