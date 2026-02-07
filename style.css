@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #ea76a1;   /* visible base color */
+    overflow: hidden;
+    min-height: 100vh
+}
+/* FLOATING HEARTS CONTAINER */
+/* INDIVIDUAL HEART */
+
+
+/* FLOATING HEARTS (SVG BASED) */
+.floating-hearts span {
+    position: absolute;
+    bottom: -40px;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+    transform: none; 
+}
+
+.floating-hearts svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: #ff1e4d;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatUp {
+    from {
+        transform: translateY(0) ;
+        opacity: 0.7;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* HEART BACKGROUND */
+.heart-bg {
+    position: fixed;
+    width: 300px;              /* smaller */
+    height: 300px;
+    background: #ff1e4d;
+    top: 57%;
+    left: 49%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation: beat 2.6s ease-in-out infinite; /* slower */
+    z-index: 1;
+    opacity: 0.85;
+    border-radius: 25px;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
+}
+
+.heart-bg::before,
+.heart-bg::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ff1e4d;
+    border-radius: 50%;
+}
+
+.no {
+    transition: transform 0.25s ease;
+}
+
+.no:hover {
+    background: #ff6b81;
+}
+
+.heart-bg::before {
+    top: -130px;
+    left: 0;
+}
+
+.heart-bg::after {
+    left: 130px;
+    top: 0;
+}
+
+.heart-bg {
+    border-radius: 15px;
+}
+
+/* SCREENS */
+.screen {
+    position: absolute;     /* IMPORTANT */
+    top: 0;
+    left: 0;
+    display: none;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+}
+#slideshow,
+#no-slideshow {
+    background: rgba(0, 0, 0, 0.25); /* subtle contrast */
+}
+
+/* TEXT & BUTTONS */
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.day-photo {
+    width: 240px;          /* fixed pleasant size */
+    max-width: 80vw;       /* responsive on small screens */
+    max-height: 35vh;      /* prevents tall images */
+    object-fit: cover;     /* crops nicely */
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    animation: fade 0.6s ease;
+}
+
+.yes {
+    background: white;
+    color: #ff1e4d;
+    font-size: 1.3rem;
+    padding: 18px 40px;
+}
+
+.no {
+    background: #f4f4f4;
+    color: rgb(255, 0, 0);
+    position: relative;
+}
+
+/* HEARTBEAT */
+@keyframes beat {
+    0%   { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+    25%  { transform: translate(-50%, -50%) rotate(-45deg) scale(1.08); }
+    40%  { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+    60%  { transform: translate(-50%, -50%) rotate(-45deg) scale(1.15); }
+    100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+}
+/* NO SLIDESHOW PHOTO */
+.no-slide-photo {
+    width: 260px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    animation: fade 1s ease;
+}
+
+.no-caption {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+/* PHOTO COLLAGE GRID */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    width: 320px;
+    max-width: 85vw;
+    margin-bottom: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    animation: fade 0.6s ease;
+}
+
+/* BIG IMAGE */
+.photo-grid img:first-child {
+    grid-row: span 2;
+}
+/* PHOTO LAYOUT AROUND HEART */
+.photo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 275px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.photo-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* BIG PHOTOS */
+.photo-column img {
+    width: 250px;
+    max-width: 35vw;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 48px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    animation: fade 0.6s ease;
+}
+
+/* CENTER SPACE FOR HEART */
+.heart-space {
+    width: 140px;   /* matches heart size */
+    height: 1px;
+}
+#left-photos {
+    margin-top: -100px; /* moves UP */
+    transform: translateX(45px);
+}
+
+#right-photos {
+    margin-top: -100px; /* moves UP */
+    transform: translateX(-15px);
+}
+#day-title {
+    margin-top: -230px;   /* move title UP */
+}
+#proposal h1 {
+    transform: translateX(20px); /* move right */
+}
+#day-message {
+    max-width: 80vw;          /* limits line length */
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* REUSE FADE */
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* -------------------------
+   MOBILE RESPONSIVE FIX
+--------------------------*/
+@media (max-width: 768px) {
+
+    /* Slideshow layout */
+    #slideshow {
+        justify-content: flex-start;
+        padding-top: 20px;
+        min-height: 100vh;
+        
+    }
+    .heart-bg {
+        transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+    }
+    /* Stack photos vertically */
+    .photo-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        transform: none; /* reset desktop shifts */
+        margin-bottom: 15px;
+    }
+
+    /* Remove heart spacing column */
+    .heart-space {
+        display: none;
+    }
+
+    /* Center photo columns */
+    .photo-column {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    /* Make photos larger & responsive */
+    .photo-column img {
+        width: 42vw;
+        height: 52vw;
+        max-width: 180px;
+        max-height: 220px;
+    }
+
+    /* Center text */
+    #day-title,
+    #day-message {
+        max-width: 90vw;
+        text-align: center;
+    }
+
+    /* Proposal screen text */
+    #proposal h1 {
+        transform: none; /* undo desktop shift */
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    /* Buttons spacing */
+    .buttons {
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 15px;
+    }
+
+    .yes,
+    .no {
+        width: 200px;
+    }
+}
