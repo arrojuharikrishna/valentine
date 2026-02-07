@@ -274,12 +274,14 @@ button {
 
     /* GENERAL */
     body {
-        overflow: hidden;
+        overflow-y: auto;   /* ✅ allow vertical scroll */
+        overflow-x: hidden;
     }
 
     .screen {
-        justify-content: flex-start;
-        padding-top: 20px;
+        min-height: 100vh;
+        height: auto;       /* ✅ allow content to grow */
+        padding-bottom: 40px;
     }
 
     /* HEART POSITION */
@@ -325,7 +327,7 @@ button {
 
     /* TEXT */
     #day-title {
-        margin-top: 0;
+        margin-top: 10px;
         font-size: 1.6rem;
         max-width: 90vw;
     }
@@ -333,8 +335,11 @@ button {
     #day-message {
         max-width: 90vw;
         line-height: 1.5;
+        margin-bottom: 30px;
     }
-
+ .photo-wrapper {
+        margin-top: 140px;  /* space below heart */
+    }
     /* PROPOSAL SCREEN */
     #proposal h1 {
         transform: none;
