@@ -21,6 +21,7 @@ body {
     animation: floatUp linear infinite;
     opacity: 0.7;
     transform: none; 
+    pointer-events: none;
 }
 
 .floating-hearts svg {
