@@ -356,6 +356,7 @@ button {
         width: 220px;
     }
 }
+/*MOBILE VIEW*/
 @media (max-width: 768px) {
 
     /* GENERAL */
