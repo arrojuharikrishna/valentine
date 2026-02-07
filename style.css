@@ -205,7 +205,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 27vw;
+    gap: 28vw;
     width: 100%;
     margin-bottom: 25px;
 }
@@ -218,9 +218,9 @@ button {
 
 /* BIG PHOTOS */
 .photo-column img {
-    width: 350px;
+    width: 280px;
     max-width: 35vw;
-    height: 400px;
+    height: 320px;
     object-fit: cover;
     border-radius: 48px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.35);
@@ -435,4 +435,5 @@ button {
         width: 220px;
     }
 }
+
 
