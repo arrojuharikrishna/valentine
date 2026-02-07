@@ -233,11 +233,13 @@ button {
     height: 1px;
 }
 #left-photos {
-    transform: translateX(2vw);
+    transform: translateX(3vw);
+    transform: translateY(5vw);
 }
 
 #right-photos {
-    transform: translateX(-2vw);
+    transform: translateX(-4vw);
+    transform: translateY(5vw);
 }
 #day-title {
     transform: translateY(-15vw);   /* move title UP */
@@ -331,6 +333,86 @@ button {
         line-height: 1.5;
         margin-bottom: 30px;
         transform: translateX(50px)
+    }
+    .photo-wrapper {
+        margin-top: 140px;  /* space below heart */
+    }
+    /* PROPOSAL SCREEN */
+    #proposal h1 {
+        transform: none;
+        padding: 0 16px;
+        font-size: 1.8rem;
+    }
+
+    /* BUTTONS */
+    .buttons {
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .yes,
+    .no {
+        width: 220px;
+    }
+}
+@media (max-width: 768px) {
+
+    /* GENERAL */
+    body {
+        overflow-y: auto;   /* ✅ allow vertical scroll */
+        overflow-x: hidden;
+    }
+
+    .screen {
+        min-height: 100vh;
+        height: auto;       /* ✅ allow content to grow */
+        padding-bottom: 40px;
+    }
+
+
+    /* PHOTO LAYOUT */
+    .photo-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 160px; /* pushes photos below heart */
+        margin-bottom: 20px;
+    }
+
+
+    .photo-column {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .photo-column img {
+        width: 42vw;
+        height: 52vw;
+        max-width: 170px;
+        max-height: 210px;
+        border-radius: 22px;
+    }
+
+    /* RESET DESKTOP SHIFTS */
+    #left-photos,
+    #right-photos {
+        margin-top: 0;
+        transform: none;
+    }
+
+    /* TEXT */
+    #day-title {
+        margin-top: 10px;
+        font-size: 1.6rem;
+        max-width: 90vw;
+    }
+
+    #day-message {
+        max-width: 90vw;
+        line-height: 1.5;
+        margin-bottom: 30px;
     }
     .photo-wrapper {
         margin-top: 140px;  /* space below heart */
