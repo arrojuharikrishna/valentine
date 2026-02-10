@@ -57,6 +57,33 @@ function getTodayIndex() {
     const map = { 7:0, 8:1, 9:2, 10:3, 11:4, 12:5, 13:6, 14:7 };
     return map[today.getDate()] ?? null;
 }
+function showAllDays() {
+    const title = document.getElementById("day-title");
+    const msg = document.getElementById("day-message");
+    const left = document.getElementById("left-photos");
+    const right = document.getElementById("right-photos");
+
+    title.innerText = "Happy Valentine’s Day Bubu ❤️";
+    msg.innerHTML = "Every day led to this moment.<br>Every memory, every smile, every promise.";
+
+    left.innerHTML = "";
+    right.innerHTML = "";
+
+    days.forEach((day, dayIdx) => {
+        day.photos.forEach((src, i) => {
+            const img = document.createElement("img");
+            img.src = src;
+
+            // alternate left / right across ALL days
+            if ((dayIdx + i) % 2 === 0) {
+                left.appendChild(img);
+            } else {
+                right.appendChild(img);
+            }
+        });
+    });
+}
+
 
 function showCurrent() {
     const day = days[dayIndex];
@@ -108,8 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("slideshow").classList.add("active");
 
         const todayIndex = getTodayIndex();
-        dayIndex = todayIndex;
-        showCurrent();
+        if (todayIndex === 7) {
+            showAllDays();   // Valentine’s Day special 💖
+        } else {
+            dayIndex = todayIndex;
+            showCurrent();
+        }
+
         if (todayIndex !== null) {
             dayMusic.src = dayMusicMap[todayIndex];
         } else {
